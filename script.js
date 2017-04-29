@@ -11,15 +11,7 @@ form.addEventListener("submit", function(event){
 
 function initMap()
 {
-    // jQuery.ajax({
-    //     url: 'https://lcboapi.com/stores?lat=43.8612895&lon=-79.3178956&products?q=beer',
-    //     headers:
-    //         {
-    //             Authorization: 'Token MDphOTlkZjgwMC0yYzgyLTExZTctOTQyNi1lZmI3ZDc5NmUzZWY6ZHdYZlJVNlp5SHZiWXFBMUdFdEpBa1VyZjBYSm40TmpHa2tl'
-    //         }
-    // }).then(function(data) {
-    //     console.log(JSON.stringify(data));
-    // });
+
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14
     });
