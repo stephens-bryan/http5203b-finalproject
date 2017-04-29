@@ -26,17 +26,23 @@ function initMap()
     {
         address = localStorage.getItem("address");
     }
+
+
     gcoder.geocode(
         { 'address': address},
         function (results, status){
             if (status == 'OK'){
+                var loc = [];
                 //address geocoded successfully
-                //center map on Humber
                 map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     position: results[0].geometry.location,
                     map: map
                 });
+                loc[0] = results[0].geometry.location.lat();
+                loc[1] = results[0].geometry.location.lng();
+                // how to grab lng & lat values from user input
+                console.log(loc[1] + " " + loc[0]);
                 localStorage.removeItem("address");
             } // end of statuscode check (AJAX)
         } // end of AJAX call
@@ -50,7 +56,17 @@ jQuery.ajax({
             Authorization: 'Token MDphOTlkZjgwMC0yYzgyLTExZTctOTQyNi1lZmI3ZDc5NmUzZWY6ZHdYZlJVNlp5SHZiWXFBMUdFdEpBa1VyZjBYSm40TmpHa2tl'
         }
 }).then(function(data) {
-    var results = data["result"][0]["name"];
-    console.log(results);
+    var results = data["result"];
+    //console.log(results);
+    //console.log(data);
+    // for(var prop in data){
+    //     if (data.hasOwnProperty(prop)){
+    //         console.log(prop + " " + data[prop]);
+    //     }
+    // }
+    for (var i = 0; i < results.length; i++){
+        console.log(results[i]["name"]);
+    }
 });
 
+// var results = data["result"][0]["address_line_1"]
