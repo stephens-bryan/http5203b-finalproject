@@ -11,6 +11,15 @@ form.addEventListener("submit", function(event){
 
 function initMap()
 {
+    // jQuery.ajax({
+    //     url: 'https://lcboapi.com/stores?lat=43.8612895&lon=-79.3178956&products?q=beer',
+    //     headers:
+    //         {
+    //             Authorization: 'Token MDphOTlkZjgwMC0yYzgyLTExZTctOTQyNi1lZmI3ZDc5NmUzZWY6ZHdYZlJVNlp5SHZiWXFBMUdFdEpBa1VyZjBYSm40TmpHa2tl'
+    //         }
+    // }).then(function(data) {
+    //     console.log(JSON.stringify(data));
+    // });
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14
     });
@@ -43,11 +52,15 @@ function initMap()
     );
 } // end of initMap()
 
-
-
 jQuery.ajax({
-    url: 'https://lcboapi.com/stores',
-    headers: { 'Authorization': 'MDpiOGQxMGIxYS0yYzgxLTExZTctOWU1Yi1iZmE1NDJjZTY2MTA6Qzd4MzMya2JZWGljWHBaY2h2Mmw2ODVKTHVjWGlZZXRJcHZm' }
+    url: 'https://lcboapi.com/stores?lat=43.8612895&lon=-79.3178956&products?q=beer',
+    headers:
+        {
+            Authorization: 'Token MDphOTlkZjgwMC0yYzgyLTExZTctOTQyNi1lZmI3ZDc5NmUzZWY6ZHdYZlJVNlp5SHZiWXFBMUdFdEpBa1VyZjBYSm40TmpHa2tl'
+        }
 }).then(function(data) {
-    console.log(data);
+    var results = data["result"][0]["name"];
+
+    console.log(results);
 });
+
