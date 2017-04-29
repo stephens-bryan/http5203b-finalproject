@@ -239,6 +239,27 @@ form.addEventListener("submit", function(event){
                         }
                 }).then(function(data) {
                     var results = data["result"];
+                    // // Note(bryanstephens): Open/close times are represented as minutes since midnight; Have to convert time to 12 hour clock and then measure current time against what time it closes
+                    //
+                    // function min24(m){
+                    //     var hour = m / 60;
+                    //     var mins = m % 60;
+                    //     return [hour, mins];
+                    // }
+                    // function min12(msn){
+                    //     var time = min24(msn);
+                    //     var h24 = time[0];
+                    //     var h12 = (0 === h24 ? 12 : (h24 > 12 ? (h24 - 10) - 2 : h24));
+                    //     var current = (h24 >= 12 ? 'PM' : 'AM');
+                    //
+                    //     return [h12, time[1], current];
+                    // }
+                    // var test = results[0]["sunday_closed"];
+                    //
+                    // var timeTest = min24(test);
+                    // //var tested = min12(timeTest);
+                    // console.log(timeTest);
+
                     for (var i = 0; i < results.length; i++){
 
                         // Note(bryanstephens): positions sets the lng & lat of each returned result
@@ -246,14 +267,6 @@ form.addEventListener("submit", function(event){
                             {lat: results[i]["latitude"], lng: results[i]["longitude"] }
                         ];
 
-
-                        var contentString = [
-
-                        ];
-
-
-
-                        //console.log(infoWindow);
                         var markers = positions.map(function(location, k){
                             var marker = new google.maps.Marker({
                                 position: location,
@@ -262,7 +275,8 @@ form.addEventListener("submit", function(event){
                             var infoWindow = new google.maps.InfoWindow({
                                 content: '<div>' +
                                 '<h2>' + results[i]["name"]  + '</h2>' +
-                                '<p> Distance away(from entered Addressed): ' + results[i]["distance_in_meters"] + '</p>' +
+                                '<p>' + results[i]["address_line_1"] + '</p>' +
+                                '<p>' + results[i]["distance_in_meters"] + ' meters away</p>' +
                                 '</div>'
                             });
                             google.maps.event.addListener(marker,'click', function(){
@@ -280,16 +294,3 @@ form.addEventListener("submit", function(event){
         });// end of google geocode event
     event.preventDefault();
 });
-
-// google.maps.event.addListener('click', function(){
-//console.log(location);
-// });
-/*
-* {
- content: contentString[i][i]
-
-
- ****8 {
-
- }
- }*/
