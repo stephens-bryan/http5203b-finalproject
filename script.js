@@ -44,3 +44,10 @@ function initMap()
 } // end of initMap()
 
 
+
+jQuery.ajax({
+    url: 'https://lcboapi.com/stores',
+    headers: { 'Authorization': 'MDpiOGQxMGIxYS0yYzgxLTExZTctOWU1Yi1iZmE1NDJjZTY2MTA6Qzd4MzMya2JZWGljWHBaY2h2Mmw2ODVKTHVjWGlZZXRJcHZm' }
+}).then(function(data) {
+    console.log(data);
+});
