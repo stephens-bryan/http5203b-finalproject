@@ -1,9 +1,9 @@
 var map, geocoder;
 function initMap()
 {
-    var center = new google.maps.LatLng(43.7181552,-79.5184852);
+    var center = new google.maps.LatLng(43.6425662,-79.3870568);
     var mapOptions = {
-        zoom: 14,
+        zoom: 15,
         center: center,
         // styling from map came from Google's map style generator: https://mapstyle.withgoogle.com/
         styles : [
