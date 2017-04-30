@@ -11,4 +11,5 @@ Allows anonymous users to enter an address. On return, they receive the closest 
 ### Special Notes
 The returned content seems to working better closer to Toronto, with some locations i tested not receiving any results, such as Uxbridge. Also, searching for addresses outside of Ontario returns no results.
 
-### 
+### font used
+Open Sans — Google Fonts (https://fonts.google.com/specimen/Open+Sans)
